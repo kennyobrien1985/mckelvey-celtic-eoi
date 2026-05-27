@@ -26,7 +26,7 @@
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       padding: 0 28px; height: 64px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center;
       background: transparent;
       border-bottom: 1px solid transparent;
       transition: all 0.4s;
@@ -37,7 +37,7 @@
       border-bottom-color: #e0e0e0;
       box-shadow: 0 1px 8px rgba(0,0,0,0.06);
     }
-    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
     .nav-brand img { width: 38px; height: 38px; object-fit: contain; }
     .nav-brand span {
       font-family: 'Barlow Condensed', sans-serif;
@@ -45,14 +45,6 @@
       color: #fff; transition: color 0.4s;
     }
     .nav.solid .nav-brand span { color: var(--text-primary); }
-    .nav-home {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
-      color: rgba(255,255,255,0.85); background: none; border: none; cursor: pointer;
-      padding: 8px 14px; text-decoration: none; transition: color 0.3s;
-    }
-    .nav.solid .nav-home { color: #555; }
-    .nav-home:hover { color: var(--green-dark) !important; }
 
     /* ── HERO ── */
     .hero {
@@ -115,32 +107,37 @@
     }
     .form-inner { max-width: 660px; margin: 0 auto; position: relative; z-index: 1; }
 
-    .section-eyebrow {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
-    }
-    .section-eyebrow .bar { width: 30px; height: 3px; background: var(--green-bright); }
-    .section-eyebrow p {
-      color: var(--green-bright); font-size: 12px; font-weight: 800;
-      letter-spacing: 3px; text-transform: uppercase; margin: 0;
+    /* Tagline */
+    .tagline {
       font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(28px, 5vw, 44px); font-weight: 900;
+      text-transform: uppercase; line-height: 1.05;
+      margin-bottom: 36px; letter-spacing: 0.5px;
     }
+    .tagline .t-green { color: var(--green-bright); }
+    .tagline .t-white { color: #fff; }
+    .tagline .t-black { color: #1a1a1a; }
+    .tagline .dot { color: rgba(255,255,255,0.3); margin: 0 6px; }
 
-    .form-heading {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(28px, 5vw, 42px); font-weight: 900;
-      text-transform: uppercase; margin: 0 0 36px; line-height: 1.05;
-      color: #fff;
+    /* Section selector card */
+    .selector-card {
+      background: #fff; border-radius: 10px;
+      border: 2px solid var(--border); padding: 28px 24px;
+      margin-bottom: 16px;
     }
-    .form-heading span { color: var(--green-bright); }
+    .selector-card label {
+      font-size: 12px; font-weight: 700; color: #666;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      font-family: 'Barlow Condensed', sans-serif;
+      display: block; margin-bottom: 6px;
+    }
 
     /* Cards */
     .card {
       background: #fff; border-radius: 10px;
       border: 2px solid var(--border); padding: 28px 24px;
       margin-bottom: 16px;
-      transition: border-color 0.3s;
     }
-
     .card-title {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 15px; font-weight: 800; letter-spacing: 2px;
@@ -175,19 +172,6 @@
     input.error, select.error { border-color: #c0392b; }
     textarea { resize: vertical; min-height: 90px; }
 
-    /* Checkboxes */
-    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .check-item {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 14px; font-weight: 600; color: var(--text-primary);
-      cursor: pointer; padding: 10px 13px;
-      border-radius: 6px; border: 1.5px solid #ddd;
-      transition: border-color 0.15s, background 0.15s;
-      user-select: none;
-    }
-    .check-item:hover { border-color: var(--green-dark); background: #edf7ef; }
-    .check-item input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--green-dark); flex-shrink: 0; }
-
     /* Submit */
     .btn-submit {
       width: 100%; margin-top: 8px;
@@ -199,14 +183,14 @@
       letter-spacing: 2.5px; text-transform: uppercase;
       border: none; border-radius: 6px; cursor: pointer;
       transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(13,107,47,0.3);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
     }
-    .btn-submit:hover { background: var(--green-bright); color: #000; box-shadow: 0 6px 24px rgba(34,197,94,0.35); }
+    .btn-submit:hover { background: var(--green-bright); color: #000; }
     .btn-submit:active { transform: scale(0.99); }
     .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
 
     .form-note {
-      font-size: 12px; color: #999; text-align: center;
+      font-size: 12px; color: rgba(255,255,255,0.6); text-align: center;
       margin-top: 14px; line-height: 1.6;
     }
 
@@ -263,7 +247,6 @@
     /* ── Responsive ── */
     @media (max-width: 580px) {
       .form-grid { grid-template-columns: 1fr; }
-      .check-grid { grid-template-columns: 1fr; }
       .field.full { grid-column: 1; }
       .card { padding: 20px 16px; }
     }
@@ -273,11 +256,10 @@
 
   <!-- NAV -->
   <nav class="nav" id="nav">
-    <a class="nav-brand" href="https://mckelveyceltic.com">
+    <div class="nav-brand">
       <img src="club-crest.png" alt="McKelvey Celtic FC crest" />
       <span>McKelvey Celtic</span>
-    </a>
-    <a class="nav-home" href="https://mckelveyceltic.com">← Back to main site</a>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -303,142 +285,252 @@
     <div class="form-stripes"></div>
     <div class="form-inner">
 
-      <div class="section-eyebrow">
-        <div class="bar"></div>
-        <p>Get Involved</p>
+      <div class="tagline">
+        <span class="t-green">Play With Us</span><span class="dot">&middot;</span><span class="t-white">Learn With Us</span><span class="dot">&middot;</span><span class="t-black">Win With Us</span>
       </div>
-      <h2 class="form-heading">Expression of <span>Interest</span></h2>
 
       <div id="formWrapper">
 
-        <!-- Personal Details -->
-        <div class="card">
-          <div class="card-title">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            Personal Details
-          </div>
-          <div class="form-grid">
-            <div class="field">
-              <label for="fname">First name <span class="req">*</span></label>
-              <input type="text" id="fname" placeholder="e.g. Conor" autocomplete="given-name" />
-            </div>
-            <div class="field">
-              <label for="lname">Last name <span class="req">*</span></label>
-              <input type="text" id="lname" placeholder="e.g. Murphy" autocomplete="family-name" />
-            </div>
-            <div class="field">
-              <label for="email">Email address <span class="req">*</span></label>
-              <input type="email" id="email" placeholder="you@email.com" autocomplete="email" />
-            </div>
-            <div class="field">
-              <label for="phone">Phone number</label>
-              <input type="tel" id="phone" placeholder="085 000 0000" autocomplete="tel" />
-            </div>
-            <div class="field">
-              <label for="dob">Date of birth</label>
-              <input type="date" id="dob" />
-            </div>
-            <div class="field">
-              <label for="address">Area / Town</label>
-              <input type="text" id="address" placeholder="e.g. Finglas, Dublin 11" />
-            </div>
-          </div>
+        <!-- Section Selector -->
+        <div class="selector-card">
+          <label for="interestedSection">Interested Section <span class="req">*</span></label>
+          <select id="interestedSection" onchange="handleSectionChange()">
+            <option value="">Select a section</option>
+            <option value="mens">Men's Senior Team</option>
+            <option value="womens">Women's Senior Team</option>
+            <option value="underage">Boys/Girls Underage Teams</option>
+          </select>
         </div>
 
-        <!-- Football Background -->
-        <div class="card">
-          <div class="card-title">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3c0 0-2 4-2 9s2 9 2 9"/><path d="M3 12h18"/><path d="M5.5 6.5c2 1 4 1.5 6.5 1.5s4.5-.5 6.5-1.5"/><path d="M5.5 17.5c2-1 4-1.5 6.5-1.5s4.5.5 6.5 1.5"/></svg>
-            Football Background
-          </div>
-          <div class="form-grid">
-            <div class="field">
-              <label for="position">Preferred position</label>
-              <select id="position">
-                <option value="">Select position</option>
-                <option>Goalkeeper</option>
-                <option>Defender</option>
-                <option>Midfielder</option>
-                <option>Forward</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="experience">Years of experience</label>
-              <select id="experience">
-                <option value="">Select</option>
-                <option>None — just starting out</option>
-                <option>1–3 years</option>
-                <option>4–7 years</option>
-                <option>8+ years</option>
-              </select>
-            </div>
-            <div class="field full">
-              <label for="prevClub">Previous club(s)</label>
-              <input type="text" id="prevClub" placeholder="e.g. Shelbourne, St Kevin's Boys (leave blank if none)" />
-            </div>
-          </div>
-        </div>
+        <!-- ── SENIOR FORM (Men's / Women's) ── -->
+        <div id="seniorForm" style="display:none;">
 
-        <!-- Areas of Interest -->
-        <div class="card">
-          <div class="card-title">
-            <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-            Areas of Interest
-          </div>
-          <div class="check-grid">
-            <label class="check-item"><input type="checkbox" name="interests" value="Playing" /> Playing</label>
-            <label class="check-item"><input type="checkbox" name="interests" value="Coaching / Management" /> Coaching / Management</label>
-            <label class="check-item"><input type="checkbox" name="interests" value="Volunteering" /> Volunteering</label>
-            <label class="check-item"><input type="checkbox" name="interests" value="Refereeing" /> Refereeing</label>
-            <label class="check-item"><input type="checkbox" name="interests" value="Committee / Admin" /> Committee / Admin</label>
-            <label class="check-item"><input type="checkbox" name="interests" value="Sponsorship" /> Sponsorship</label>
-          </div>
-        </div>
-
-        <!-- Anything Else -->
-        <div class="card">
-          <div class="card-title">
-            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            Anything Else?
-          </div>
-          <div class="form-grid">
-            <div class="field full">
-              <label for="message">Message (optional)</label>
-              <textarea id="message" placeholder="Tell us a bit about yourself or ask any questions..."></textarea>
+          <!-- Personal Details -->
+          <div class="card">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              Personal Details
             </div>
-            <div class="field full">
-              <label for="hear">How did you hear about us?</label>
-              <select id="hear">
-                <option value="">Select</option>
-                <option>Facebook / Social media</option>
-                <option>Friend or family</option>
-                <option>Club website</option>
-                <option>Local community</option>
-                <option>Other</option>
-              </select>
+            <div class="form-grid">
+              <div class="field">
+                <label for="s-fname">First name <span class="req">*</span></label>
+                <input type="text" id="s-fname" placeholder="e.g. Conor" autocomplete="given-name" />
+              </div>
+              <div class="field">
+                <label for="s-lname">Last name <span class="req">*</span></label>
+                <input type="text" id="s-lname" placeholder="e.g. Murphy" autocomplete="family-name" />
+              </div>
+              <div class="field">
+                <label for="s-email">Email address <span class="req">*</span></label>
+                <input type="email" id="s-email" placeholder="you@email.com" autocomplete="email" />
+              </div>
+              <div class="field">
+                <label for="s-phone">Phone number</label>
+                <input type="tel" id="s-phone" placeholder="085 000 0000" autocomplete="tel" />
+              </div>
+              <div class="field">
+                <label for="s-dob">Date of birth</label>
+                <input type="date" id="s-dob" />
+              </div>
+              <div class="field">
+                <label for="s-address">Area / Town</label>
+                <input type="text" id="s-address" placeholder="e.g. Finglas, Dublin 11" />
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Submit -->
-        <button class="btn-submit" id="submitBtn" onclick="submitForm()">
-          Submit Expression of Interest
-        </button>
-        <p class="form-note">
-          Fields marked <span style="color:#c0392b">*</span> are required.
-          Your details will only be used by McKelvey Celtic FC and never shared with third parties.
-        </p>
+          <!-- Football Background -->
+          <div class="card">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3c0 0-2 4-2 9s2 9 2 9"/><path d="M3 12h18"/><path d="M5.5 6.5c2 1 4 1.5 6.5 1.5s4.5-.5 6.5-1.5"/><path d="M5.5 17.5c2-1 4-1.5 6.5-1.5s4.5.5 6.5 1.5"/></svg>
+              Football Background
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="s-position">Preferred position</label>
+                <select id="s-position">
+                  <option value="">Select position</option>
+                  <option>Goalkeeper</option>
+                  <option>Defender</option>
+                  <option>Midfielder</option>
+                  <option>Forward</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="s-experience">Years of experience</label>
+                <select id="s-experience">
+                  <option value="">Select</option>
+                  <option>None — just starting out</option>
+                  <option>1–3 years</option>
+                  <option>4–7 years</option>
+                  <option>8+ years</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="s-prevClub">Previous club(s)</label>
+                <input type="text" id="s-prevClub" placeholder="e.g. Shelbourne, St Kevin's Boys (leave blank if none)" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Anything Else -->
+          <div class="card">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              Anything Else?
+            </div>
+            <div class="form-grid">
+              <div class="field full">
+                <label for="s-message">Message (optional)</label>
+                <textarea id="s-message" placeholder="Tell us a bit about yourself or ask any questions..."></textarea>
+              </div>
+              <div class="field full">
+                <label for="s-hear">How did you hear about us?</label>
+                <select id="s-hear">
+                  <option value="">Select</option>
+                  <option>Facebook / Social media</option>
+                  <option>Friend or family</option>
+                  <option>Club website</option>
+                  <option>Local community</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /seniorForm -->
+
+        <!-- ── UNDERAGE FORM ── -->
+        <div id="underageForm" style="display:none;">
+
+          <!-- Parent / Guardian Details -->
+          <div class="card">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              Parent / Guardian Details
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="u-fname">First name <span class="req">*</span></label>
+                <input type="text" id="u-fname" placeholder="e.g. Conor" autocomplete="given-name" />
+              </div>
+              <div class="field">
+                <label for="u-lname">Last name <span class="req">*</span></label>
+                <input type="text" id="u-lname" placeholder="e.g. Murphy" autocomplete="family-name" />
+              </div>
+              <div class="field">
+                <label for="u-email">Email address <span class="req">*</span></label>
+                <input type="email" id="u-email" placeholder="you@email.com" autocomplete="email" />
+              </div>
+              <div class="field">
+                <label for="u-phone">Phone number</label>
+                <input type="tel" id="u-phone" placeholder="085 000 0000" autocomplete="tel" />
+              </div>
+              <div class="field full">
+                <label for="u-address">Area / Town</label>
+                <input type="text" id="u-address" placeholder="e.g. Finglas, Dublin 11" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Player's Details -->
+          <div class="card">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3c0 0-2 4-2 9s2 9 2 9"/><path d="M3 12h18"/><path d="M5.5 6.5c2 1 4 1.5 6.5 1.5s4.5-.5 6.5-1.5"/><path d="M5.5 17.5c2-1 4-1.5 6.5-1.5s4.5.5 6.5 1.5"/></svg>
+              Player's Details
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="u-pfname">Player first name <span class="req">*</span></label>
+                <input type="text" id="u-pfname" placeholder="e.g. Ciarán" />
+              </div>
+              <div class="field">
+                <label for="u-plname">Player last name <span class="req">*</span></label>
+                <input type="text" id="u-plname" placeholder="e.g. Murphy" />
+              </div>
+              <div class="field">
+                <label for="u-pdob">Player date of birth <span class="req">*</span></label>
+                <input type="date" id="u-pdob" />
+              </div>
+              <div class="field">
+                <label for="u-position">Preferred position</label>
+                <select id="u-position">
+                  <option value="">Select position</option>
+                  <option>Goalkeeper</option>
+                  <option>Defender</option>
+                  <option>Midfielder</option>
+                  <option>Forward</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="u-experience">Years of experience</label>
+                <select id="u-experience">
+                  <option value="">Select</option>
+                  <option>None — just starting out</option>
+                  <option>1–3 years</option>
+                  <option>4–7 years</option>
+                  <option>8+ years</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="u-prevClub">Previous club(s)</label>
+                <input type="text" id="u-prevClub" placeholder="e.g. St Kevin's Boys (leave blank if none)" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Anything Else -->
+          <div class="card">
+            <div class="card-title">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              Anything Else?
+            </div>
+            <div class="form-grid">
+              <div class="field full">
+                <label for="u-message">Message (optional)</label>
+                <textarea id="u-message" placeholder="Tell us anything else you'd like us to know..."></textarea>
+              </div>
+              <div class="field full">
+                <label for="u-hear">How did you hear about us?</label>
+                <select id="u-hear">
+                  <option value="">Select</option>
+                  <option>Facebook / Social media</option>
+                  <option>Friend or family</option>
+                  <option>Club website</option>
+                  <option>Local community</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /underageForm -->
+
+        <!-- Submit (shown once a section is selected) -->
+        <div id="submitArea" style="display:none;">
+          <button class="btn-submit" id="submitBtn" onclick="submitForm()">
+            Submit Expression of Interest
+          </button>
+          <p class="form-note">
+            Fields marked <span style="color:#f87171">*</span> are required.
+            Your details will only be used by McKelvey Celtic FC and never shared with third parties.
+          </p>
+        </div>
 
       </div><!-- /formWrapper -->
 
       <!-- Success -->
       <div class="success-screen" id="successScreen">
+        <img src="club-crest.png" alt="McKelvey Celtic FC" style="width:90px;height:90px;object-fit:contain;margin-bottom:1.25rem;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.15));" />
         <div class="success-icon">
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <h2>Thanks for getting in touch!</h2>
-        <p>We've received your expression of interest and will be in contact with you shortly.<br><br><strong>Up the Hoops! 💚</strong></p>
+        <h2>Registration Received!</h2>
+        <p>Thank you for registering your interest in McKelvey Celtic for the <strong>26/27 season</strong>.<br><br>
+        Our coaches will be in touch with information on dates for open training sessions for the section related to this player.<br><br>
+        <span style="color:#0d6b2f;font-weight:700;">Up the Hoops! 💚</span></p>
       </div>
 
     </div>
@@ -463,53 +555,68 @@
   </footer>
 
   <script>
-    // ── Replace with your Google Apps Script URL when ready ──
     const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
-    // Hero load animation
     window.addEventListener('load', () => {
       document.getElementById('heroContent').classList.add('loaded');
     });
 
-    // Sticky nav
     window.addEventListener('scroll', () => {
       document.getElementById('nav').classList.toggle('solid', window.scrollY > 60);
     }, { passive: true });
 
-    // Year
     document.getElementById('yr').textContent = new Date().getFullYear();
 
-    // Form submit
-    function submitForm() {
-      const btn = document.getElementById('submitBtn');
-      const fname = document.getElementById('fname').value.trim();
-      const lname = document.getElementById('lname').value.trim();
-      const email = document.getElementById('email').value.trim();
+    function handleSectionChange() {
+      const val = document.getElementById('interestedSection').value;
+      document.getElementById('seniorForm').style.display    = (val === 'mens' || val === 'womens') ? 'block' : 'none';
+      document.getElementById('underageForm').style.display  = (val === 'underage') ? 'block' : 'none';
+      document.getElementById('submitArea').style.display    = val ? 'block' : 'none';
+    }
 
+    function submitForm() {
+      const section = document.getElementById('interestedSection').value;
+      const btn = document.getElementById('submitBtn');
+      let payload = { section: document.getElementById('interestedSection').options[document.getElementById('interestedSection').selectedIndex].text };
       let valid = true;
-      [['fname', fname], ['lname', lname], ['email', email]].forEach(([id, val]) => {
+
+      function req(id) {
         const el = document.getElementById(id);
-        if (!val) { el.classList.add('error'); valid = false; }
-        else el.classList.remove('error');
-      });
+        const val = el.value.trim();
+        if (!val) { el.classList.add('error'); valid = false; } else el.classList.remove('error');
+        return val;
+      }
+      function get(id) { return document.getElementById(id).value.trim(); }
+
+      if (section === 'mens' || section === 'womens') {
+        payload.fname      = req('s-fname');
+        payload.lname      = req('s-lname');
+        payload.email      = req('s-email');
+        payload.phone      = get('s-phone');
+        payload.dob        = get('s-dob');
+        payload.address    = get('s-address');
+        payload.position   = get('s-position');
+        payload.experience = get('s-experience');
+        payload.prevClub   = get('s-prevClub');
+        payload.message    = get('s-message');
+        payload.hear       = get('s-hear');
+      } else if (section === 'underage') {
+        payload.fname      = req('u-fname');
+        payload.lname      = req('u-lname');
+        payload.email      = req('u-email');
+        payload.phone      = get('u-phone');
+        payload.address    = get('u-address');
+        payload.pfname     = req('u-pfname');
+        payload.plname     = req('u-plname');
+        payload.pdob       = req('u-pdob');
+        payload.position   = get('u-position');
+        payload.experience = get('u-experience');
+        payload.prevClub   = get('u-prevClub');
+        payload.message    = get('u-message');
+        payload.hear       = get('u-hear');
+      }
 
       if (!valid) { document.querySelector('.error').focus(); return; }
-
-      const interests = [...document.querySelectorAll('input[name="interests"]:checked')]
-        .map(c => c.value).join(', ') || 'Not specified';
-
-      const payload = {
-        fname, lname, email,
-        phone:      document.getElementById('phone').value.trim(),
-        dob:        document.getElementById('dob').value,
-        address:    document.getElementById('address').value.trim(),
-        position:   document.getElementById('position').value,
-        experience: document.getElementById('experience').value,
-        prevClub:   document.getElementById('prevClub').value.trim(),
-        interests,
-        message:    document.getElementById('message').value.trim(),
-        hear:       document.getElementById('hear').value
-      };
 
       btn.disabled = true;
       btn.textContent = 'Sending…';
@@ -530,9 +637,8 @@
         });
     }
 
-    // Clear error on type
-    document.querySelectorAll('input, select').forEach(el => {
-      el.addEventListener('input', () => el.classList.remove('error'));
+    document.addEventListener('input', e => {
+      if (e.target.matches('input, select')) e.target.classList.remove('error');
     });
   </script>
 </body>
