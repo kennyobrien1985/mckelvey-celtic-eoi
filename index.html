@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expression of Interest — McKelvey Celtic FC</title>
+  <meta name="description" content="Interested in joining McKelvey Celtic FC? Fill in your expression of interest and we'll be in touch." />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark:   #0d6b2f;
+      --green-bright: #22c55e;
+      --bg-dark:      #0a0a0a;
+      --text-primary: #1a1a1a;
+      --text-muted:   #555;
+      --border:       #e8ece8;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', 'Helvetica Neue', sans-serif; color: var(--text-primary); overflow-x: hidden; background: #fff; }
+    ::selection { background: #0d6b2f; color: #fff; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 28px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: all 0.4s;
+    }
+    .nav.solid {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom-color: #e0e0e0;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-brand img { width: 38px; height: 38px; object-fit: contain; }
+    .nav-brand span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: #fff; transition: color 0.4s;
+    }
+    .nav.solid .nav-brand span { color: var(--text-primary); }
+    .nav-home {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.85); background: none; border: none; cursor: pointer;
+      padding: 8px 14px; text-decoration: none; transition: color 0.3s;
+    }
+    .nav.solid .nav-home { color: #555; }
+    .nav-home:hover { color: var(--green-dark) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 60vh; min-height: 460px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; background: #0a0a0a;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('McKelvey_1.jpg');
+      background-size: cover; background-position: center 40%;
+      opacity: 0.35;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(13,107,47,0.2) 0%, transparent 50%, rgba(0,0,0,0.85) 100%);
+    }
+    .hero-fade {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 35%;
+      background: linear-gradient(to top, #fff, transparent);
+    }
+    .hero-stripes {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255,255,255,0.025) 40px, rgba(255,255,255,0.025) 42px);
+    }
+    .hero-accent {
+      position: absolute; left: 0; top: 20%; bottom: 20%; width: 4px;
+      background: linear-gradient(to bottom, transparent, #0d6b2f, transparent);
+    }
+    .hero-content {
+      position: relative; z-index: 1; text-align: center; padding: 0 24px;
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hero-content.loaded { opacity: 1; transform: translateY(0); }
+    .hero-content img { width: 110px; height: 110px; object-fit: contain; margin-bottom: 20px; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.5)); }
+    .hero-content h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(36px, 8vw, 68px); font-weight: 900;
+      color: #fff; margin: 0 0 4px; line-height: 0.95;
+      letter-spacing: -1px; text-transform: uppercase;
+    }
+    .hero-content h1 span { color: var(--green-bright); }
+    .hero-rule { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 16px 0 0; }
+    .hero-rule .line { width: 40px; height: 2px; background: var(--green-bright); }
+    .hero-rule p {
+      color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; margin: 0;
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
+    /* ── FORM AREA ── */
+    .form-area {
+      background: #f5f7f5; position: relative; overflow: hidden;
+      padding: 60px 24px 80px;
+    }
+    .form-stripes {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(13,107,47,0.018) 40px, rgba(13,107,47,0.018) 42px);
+    }
+    .form-inner { max-width: 660px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .section-eyebrow {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+    }
+    .section-eyebrow .bar { width: 30px; height: 3px; background: var(--green-dark); }
+    .section-eyebrow p {
+      color: var(--green-dark); font-size: 12px; font-weight: 800;
+      letter-spacing: 3px; text-transform: uppercase; margin: 0;
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
+    .form-heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(28px, 5vw, 42px); font-weight: 900;
+      text-transform: uppercase; margin: 0 0 36px; line-height: 1.05;
+      color: var(--text-primary);
+    }
+    .form-heading span { color: var(--green-dark); }
+
+    /* Cards */
+    .card {
+      background: #fff; border-radius: 10px;
+      border: 2px solid var(--border); padding: 28px 24px;
+      margin-bottom: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px; font-weight: 800; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--green-dark);
+      margin-bottom: 20px; padding-bottom: 10px;
+      border-bottom: 2px solid #edf7ef;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card-title svg { width: 16px; height: 16px; stroke: var(--green-dark); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+    /* Grid */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field.full { grid-column: 1 / -1; }
+
+    label { font-size: 12px; font-weight: 700; color: #666; letter-spacing: 0.5px; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif; }
+    .req { color: #c0392b; }
+
+    input, select, textarea {
+      font-family: 'Barlow', sans-serif; font-size: 14px;
+      padding: 10px 13px;
+      border: 1.5px solid #ddd; border-radius: 6px;
+      background: #fafafa; color: var(--text-primary);
+      outline: none; width: 100%;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--green-dark);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(13,107,47,0.1);
+    }
+    input.error, select.error { border-color: #c0392b; }
+    textarea { resize: vertical; min-height: 90px; }
+
+    /* Checkboxes */
+    .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .check-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; font-weight: 600; color: var(--text-primary);
+      cursor: pointer; padding: 10px 13px;
+      border-radius: 6px; border: 1.5px solid #ddd;
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+    }
+    .check-item:hover { border-color: var(--green-dark); background: #edf7ef; }
+    .check-item input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--green-dark); flex-shrink: 0; }
+
+    /* Submit */
+    .btn-submit {
+      width: 100%; margin-top: 8px;
+      padding: 16px;
+      background: var(--green-dark);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px; font-weight: 800;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      border: none; border-radius: 6px; cursor: pointer;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(13,107,47,0.3);
+    }
+    .btn-submit:hover { background: var(--green-bright); color: #000; box-shadow: 0 6px 24px rgba(34,197,94,0.35); }
+    .btn-submit:active { transform: scale(0.99); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .form-note {
+      font-size: 12px; color: #999; text-align: center;
+      margin-top: 14px; line-height: 1.6;
+    }
+
+    /* Success */
+    .success-screen {
+      display: none; text-align: center;
+      padding: 4rem 2rem; background: #fff;
+      border-radius: 10px; border: 2px solid var(--border);
+    }
+    .success-icon {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: #edf7ef; border: 3px solid var(--green-bright);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .success-icon svg { width: 36px; height: 36px; stroke: var(--green-bright); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .success-screen h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 36px; font-weight: 900; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--green-dark); margin-bottom: 12px;
+    }
+    .success-screen p { font-size: 16px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; padding: 60px 24px 28px;
+      background: var(--bg-dark); overflow: hidden;
+    }
+    footer::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(to right, #0d6b2f, #22c55e, #0d6b2f);
+    }
+    .footer-inner { max-width: 660px; margin: 0 auto; }
+    .footer-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .footer-brand img { width: 48px; height: 48px; object-fit: contain; }
+    .footer-brand-text div:first-child {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: 16px; color: #fff; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .footer-brand-text div:last-child { font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 1px; }
+    .footer-addr { color: rgba(255,255,255,0.35); font-size: 14px; line-height: 1.7; margin-bottom: 28px; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06); padding-top: 18px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.2); font-size: 11px; }
+    .footer-bottom a {
+      color: rgba(255,255,255,0.2); font-size: 11px; text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s;
+    }
+    .footer-bottom a:hover { color: var(--green-bright); }
+
+    /* ── Responsive ── */
+    @media (max-width: 580px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .check-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: 1; }
+      .card { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a class="nav-brand" href="https://mckelveyceltic.com">
+      <img src="club-crest.png" alt="McKelvey Celtic FC crest" />
+      <span>McKelvey Celtic</span>
+    </a>
+    <a class="nav-home" href="https://mckelveyceltic.com">← Back to main site</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-stripes"></div>
+    <div class="hero-accent"></div>
+    <div class="hero-fade"></div>
+    <div class="hero-content" id="heroContent">
+      <img src="club-crest.png" alt="McKelvey Celtic FC" />
+      <h1>McKelvey<br /><span>Celtic FC</span></h1>
+      <div class="hero-rule">
+        <div class="line"></div>
+        <p>Finglas &middot; Dublin &middot; Est. 1966</p>
+        <div class="line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="form-area">
+    <div class="form-stripes"></div>
+    <div class="form-inner">
+
+      <div class="section-eyebrow">
+        <div class="bar"></div>
+        <p>Get Involved</p>
+      </div>
+      <h2 class="form-heading">Expression of <span>Interest</span></h2>
+
+      <div id="formWrapper">
+
+        <!-- Personal Details -->
+        <div class="card">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            Personal Details
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label for="fname">First name <span class="req">*</span></label>
+              <input type="text" id="fname" placeholder="e.g. Conor" autocomplete="given-name" />
+            </div>
+            <div class="field">
+              <label for="lname">Last name <span class="req">*</span></label>
+              <input type="text" id="lname" placeholder="e.g. Murphy" autocomplete="family-name" />
+            </div>
+            <div class="field">
+              <label for="email">Email address <span class="req">*</span></label>
+              <input type="email" id="email" placeholder="you@email.com" autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" placeholder="085 000 0000" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="dob">Date of birth</label>
+              <input type="date" id="dob" />
+            </div>
+            <div class="field">
+              <label for="address">Area / Town</label>
+              <input type="text" id="address" placeholder="e.g. Finglas, Dublin 11" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Football Background -->
+        <div class="card">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3c0 0-2 4-2 9s2 9 2 9"/><path d="M3 12h18"/><path d="M5.5 6.5c2 1 4 1.5 6.5 1.5s4.5-.5 6.5-1.5"/><path d="M5.5 17.5c2-1 4-1.5 6.5-1.5s4.5.5 6.5 1.5"/></svg>
+            Football Background
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label for="position">Preferred position</label>
+              <select id="position">
+                <option value="">Select position</option>
+                <option>Goalkeeper</option>
+                <option>Defender</option>
+                <option>Midfielder</option>
+                <option>Forward</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="experience">Years of experience</label>
+              <select id="experience">
+                <option value="">Select</option>
+                <option>None — just starting out</option>
+                <option>1–3 years</option>
+                <option>4–7 years</option>
+                <option>8+ years</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="prevClub">Previous club(s)</label>
+              <input type="text" id="prevClub" placeholder="e.g. Shelbourne, St Kevin's Boys (leave blank if none)" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Areas of Interest -->
+        <div class="card">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            Areas of Interest
+          </div>
+          <div class="check-grid">
+            <label class="check-item"><input type="checkbox" name="interests" value="Playing" /> Playing</label>
+            <label class="check-item"><input type="checkbox" name="interests" value="Coaching / Management" /> Coaching / Management</label>
+            <label class="check-item"><input type="checkbox" name="interests" value="Volunteering" /> Volunteering</label>
+            <label class="check-item"><input type="checkbox" name="interests" value="Refereeing" /> Refereeing</label>
+            <label class="check-item"><input type="checkbox" name="interests" value="Committee / Admin" /> Committee / Admin</label>
+            <label class="check-item"><input type="checkbox" name="interests" value="Sponsorship" /> Sponsorship</label>
+          </div>
+        </div>
+
+        <!-- Anything Else -->
+        <div class="card">
+          <div class="card-title">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Anything Else?
+          </div>
+          <div class="form-grid">
+            <div class="field full">
+              <label for="message">Message (optional)</label>
+              <textarea id="message" placeholder="Tell us a bit about yourself or ask any questions..."></textarea>
+            </div>
+            <div class="field full">
+              <label for="hear">How did you hear about us?</label>
+              <select id="hear">
+                <option value="">Select</option>
+                <option>Facebook / Social media</option>
+                <option>Friend or family</option>
+                <option>Club website</option>
+                <option>Local community</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button class="btn-submit" id="submitBtn" onclick="submitForm()">
+          Submit Expression of Interest
+        </button>
+        <p class="form-note">
+          Fields marked <span style="color:#c0392b">*</span> are required.
+          Your details will only be used by McKelvey Celtic FC and never shared with third parties.
+        </p>
+
+      </div><!-- /formWrapper -->
+
+      <!-- Success -->
+      <div class="success-screen" id="successScreen">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2>Thanks for getting in touch!</h2>
+        <p>We've received your expression of interest and will be in contact with you shortly.<br><br><strong>Up the Hoops! 💚</strong></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="club-crest.png" alt="McKelvey Celtic FC" />
+        <div class="footer-brand-text">
+          <div>McKelvey Celtic FC</div>
+          <div>Founded 1966</div>
+        </div>
+      </div>
+      <p class="footer-addr">St. Margaret's Road<br />Finglas, Dublin</p>
+      <div class="footer-bottom">
+        <p>&copy; <span id="yr"></span> McKelvey Celtic FC</p>
+        <a href="https://lotto.mckelveyceltic.com">Club Lotto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Replace with your Google Apps Script URL when ready ──
+    const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+    // Hero load animation
+    window.addEventListener('load', () => {
+      document.getElementById('heroContent').classList.add('loaded');
+    });
+
+    // Sticky nav
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('solid', window.scrollY > 60);
+    }, { passive: true });
+
+    // Year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Form submit
+    function submitForm() {
+      const btn = document.getElementById('submitBtn');
+      const fname = document.getElementById('fname').value.trim();
+      const lname = document.getElementById('lname').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      let valid = true;
+      [['fname', fname], ['lname', lname], ['email', email]].forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (!val) { el.classList.add('error'); valid = false; }
+        else el.classList.remove('error');
+      });
+
+      if (!valid) { document.querySelector('.error').focus(); return; }
+
+      const interests = [...document.querySelectorAll('input[name="interests"]:checked')]
+        .map(c => c.value).join(', ') || 'Not specified';
+
+      const payload = {
+        fname, lname, email,
+        phone:      document.getElementById('phone').value.trim(),
+        dob:        document.getElementById('dob').value,
+        address:    document.getElementById('address').value.trim(),
+        position:   document.getElementById('position').value,
+        experience: document.getElementById('experience').value,
+        prevClub:   document.getElementById('prevClub').value.trim(),
+        interests,
+        message:    document.getElementById('message').value.trim(),
+        hear:       document.getElementById('hear').value
+      };
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) })
+        .then(r => r.json())
+        .then(data => {
+          if (data.result === 'success') {
+            document.getElementById('formWrapper').style.display = 'none';
+            document.getElementById('successScreen').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else { throw new Error(); }
+        })
+        .catch(() => {
+          btn.disabled = false;
+          btn.textContent = 'Submit Expression of Interest';
+          alert('Something went wrong — please try again or contact us directly.');
+        });
+    }
+
+    // Clear error on type
+    document.querySelectorAll('input, select').forEach(el => {
+      el.addEventListener('input', () => el.classList.remove('error'));
+    });
+  </script>
+</body>
+</html>
