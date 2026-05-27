@@ -95,6 +95,16 @@
       letter-spacing: 3px; text-transform: uppercase; margin: 0;
       font-family: 'Barlow Condensed', sans-serif;
     }
+    .hero-tagline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(18px, 3.5vw, 26px); font-weight: 900;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-top: 22px; line-height: 1.1;
+    }
+    .hero-tagline .t-green  { color: var(--green-bright); }
+    .hero-tagline .t-white  { color: #fff; }
+    .hero-tagline .t-yellow { color: #fbbf24; }
+    .hero-tagline .dot { color: rgba(255,255,255,0.3); margin: 0 8px; }
 
     /* ── FORM AREA ── */
     .form-area {
@@ -107,17 +117,12 @@
     }
     .form-inner { max-width: 660px; margin: 0 auto; position: relative; z-index: 1; }
 
-    /* Tagline */
-    .tagline {
+    .form-section-heading {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(28px, 5vw, 44px); font-weight: 900;
-      text-transform: uppercase; line-height: 1.05;
-      margin-bottom: 36px; letter-spacing: 0.5px;
+      font-size: clamp(30px, 5vw, 46px); font-weight: 900;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: #fff; margin-bottom: 28px; line-height: 1;
     }
-    .tagline .t-green { color: var(--green-bright); }
-    .tagline .t-white { color: #fff; }
-    .tagline .t-black { color: #1a1a1a; }
-    .tagline .dot { color: rgba(255,255,255,0.3); margin: 0 6px; }
 
     /* Section selector card */
     .selector-card {
@@ -277,6 +282,9 @@
         <p>Finglas &middot; Dublin &middot; Est. 1966</p>
         <div class="line"></div>
       </div>
+      <div class="hero-tagline">
+        <span class="t-green">Play With Us</span><span class="dot">&middot;</span><span class="t-white">Learn With Us</span><span class="dot">&middot;</span><span class="t-yellow">Win With Us</span>
+      </div>
     </div>
   </section>
 
@@ -285,9 +293,7 @@
     <div class="form-stripes"></div>
     <div class="form-inner">
 
-      <div class="tagline">
-        <span class="t-green">Play With Us</span><span class="dot">&middot;</span><span class="t-white">Learn With Us</span><span class="dot">&middot;</span><span class="t-black">Win With Us</span>
-      </div>
+      <div class="form-section-heading">Expression of Interest</div>
 
       <div id="formWrapper">
 
