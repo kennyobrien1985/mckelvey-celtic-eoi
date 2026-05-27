@@ -72,7 +72,7 @@
     }
     .hero-fade {
       position: absolute; bottom: 0; left: 0; right: 0; height: 35%;
-      background: linear-gradient(to top, #fff, transparent);
+      background: linear-gradient(to top, #0d6b2f, transparent);
     }
     .hero-stripes {
       position: absolute; inset: 0; pointer-events: none;
@@ -106,21 +106,21 @@
 
     /* ── FORM AREA ── */
     .form-area {
-      background: #f5f7f5; position: relative; overflow: hidden;
+      background: #0d6b2f; position: relative; overflow: hidden;
       padding: 60px 24px 80px;
     }
     .form-stripes {
       position: absolute; inset: 0; pointer-events: none;
-      background-image: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(13,107,47,0.018) 40px, rgba(13,107,47,0.018) 42px);
+      background-image: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(0,0,0,0.06) 40px, rgba(0,0,0,0.06) 42px);
     }
     .form-inner { max-width: 660px; margin: 0 auto; position: relative; z-index: 1; }
 
     .section-eyebrow {
       display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
     }
-    .section-eyebrow .bar { width: 30px; height: 3px; background: var(--green-dark); }
+    .section-eyebrow .bar { width: 30px; height: 3px; background: var(--green-bright); }
     .section-eyebrow p {
-      color: var(--green-dark); font-size: 12px; font-weight: 800;
+      color: var(--green-bright); font-size: 12px; font-weight: 800;
       letter-spacing: 3px; text-transform: uppercase; margin: 0;
       font-family: 'Barlow Condensed', sans-serif;
     }
@@ -129,9 +129,9 @@
       font-family: 'Barlow Condensed', sans-serif;
       font-size: clamp(28px, 5vw, 42px); font-weight: 900;
       text-transform: uppercase; margin: 0 0 36px; line-height: 1.05;
-      color: var(--text-primary);
+      color: #fff;
     }
-    .form-heading span { color: var(--green-dark); }
+    .form-heading span { color: var(--green-bright); }
 
     /* Cards */
     .card {
