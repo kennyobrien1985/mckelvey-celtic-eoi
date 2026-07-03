@@ -303,6 +303,7 @@
           <select id="interestedSection" onchange="handleSectionChange()">
             <option value="">Select a section</option>
             <option value="mens">Men's Senior Team</option>
+            <option value="u19s">Men's U19s Team</option>
             <option value="womens">Women's Senior Team</option>
             <option value="underage">Boys/Girls Underage Teams</option>
           </select>
@@ -561,7 +562,7 @@
   </footer>
 
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx-mjooKop55iMSbPGf5FqvjdCo3FtJ0T9qjFT1bhPw6XYvSGjrMYhSKXmEjhAedh07PA/exec';
+    const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
     window.addEventListener('load', () => {
       document.getElementById('heroContent').classList.add('loaded');
@@ -575,7 +576,7 @@
 
     function handleSectionChange() {
       const val = document.getElementById('interestedSection').value;
-      document.getElementById('seniorForm').style.display    = (val === 'mens' || val === 'womens') ? 'block' : 'none';
+      document.getElementById('seniorForm').style.display    = (val === 'mens' || val === 'womens' || val === 'u19s') ? 'block' : 'none';
       document.getElementById('underageForm').style.display  = (val === 'underage') ? 'block' : 'none';
       document.getElementById('submitArea').style.display    = val ? 'block' : 'none';
     }
@@ -594,7 +595,7 @@
       }
       function get(id) { return document.getElementById(id).value.trim(); }
 
-      if (section === 'mens' || section === 'womens') {
+      if (section === 'mens' || section === 'womens' || section === 'u19s') {
         payload.fname      = req('s-fname');
         payload.lname      = req('s-lname');
         payload.email      = req('s-email');
